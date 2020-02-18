@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.scss";
+import Container from "./components/container";
+import Button from "./components/Button";
+import { GAME_MODE_BEGIN, GAME_MODE_ADVANTAGE } from "./contants";
+import GameComponent from "./components/GameComponent";
 
 function App() {
+  const [mode_game, setModeGame] = useState("");
+  const onChoseMode = mode => {
+    if (mode === GAME_MODE_BEGIN) {
+      setModeGame(9);
+    } else {
+      setModeGame(10);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!mode_game ? (
+        <Container clssName="home-page">
+          <h1>Mini Minesweeper</h1>
+          <h4>Please chose level to play!!!</h4>
+          <div className="home-page__btn-group">
+            <Button
+              label="Beginner"
+              clssName="btn-mode-game"
+              handleClick={() => onChoseMode(GAME_MODE_BEGIN)}
+            />
+            <Button
+              label="Advantage"
+              clssName="btn-mode-game"
+              handleClick={() => onChoseMode(GAME_MODE_ADVANTAGE)}
+            />
+          </div>
+        </Container>
+      ) : (
+        <GameComponent mode={mode_game} />
+      )}
     </div>
   );
 }
