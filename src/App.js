@@ -11,7 +11,7 @@ function App() {
     if (mode === GAME_MODE_BEGIN) {
       setModeGame(9);
     } else {
-      setModeGame(10);
+      setModeGame(16);
     }
   };
 

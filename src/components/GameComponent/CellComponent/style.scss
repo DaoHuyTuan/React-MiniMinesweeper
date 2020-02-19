@@ -1,0 +1,18 @@
+.cell-group {
+    display: grid;
+    &.layout9x9 {
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+    }
+    &.layout16x16 {
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(16, 1fr);
+    }
+    .cell {
+        border: 1px solid black;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        background-color: #ddd;
+    }    
+}
